@@ -12,7 +12,8 @@
     height: 100vh;
     min-height: 600px; }
   .ftco-cover-1 > .container {
-    position: relative; }
+    position: relative;
+  top: -70px; }
   .ftco-cover-1.overlay {
     position: relative; }
     .ftco-cover-1.overlay:before {
@@ -74,11 +75,12 @@
       }
       
       li a:hover:not(.active) {
-        background: rgb(34,193,195);
-        background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
       }
       
       li a.active {
         color:white;
         background-color: orange;
       }
+  
