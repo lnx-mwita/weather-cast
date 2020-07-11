@@ -20,6 +20,6 @@ from reports import views
 urlpatterns = [
     path('',views.home),
     path('admin/', admin.site.urls),
-    path('get_city', views.weather),
+    path('results', views.weather),
 
 ]

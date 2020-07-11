@@ -2,15 +2,15 @@ from django.shortcuts import render
 from django.http import request
 import requests
 import json
+from datetime import date,datetime
 
-
-
+today = date.today()
+time = datetime.now().strftime("%H:%M")
 # Create your views here.
 def home(request):
     return render(request,'index.html')
 
 def weather(request):
-    global api
     try:
         city = request.GET['search']
         api_key = 'fc7eaee4b8f30c7b2ebe505511239dbe'
@@ -18,19 +18,23 @@ def weather(request):
         data = requests.get(api).json()
         kelvin = int(data['main']['temp'])
         degrees = (kelvin-273)
+        date = today.strftime("%B %d, %Y")
         lat  = data['coord']['lat']
         long = data['coord']['lon']
-        return render(request, 'index.html', {
+        return render(request, 'result.html', {
             'city':city,
-            'position':[lat,long],
-            'temps':degrees})
+            'position':['Position : ',lat,long],
+            'temps':degrees,
+            'date':date,
+            'time':time,
+            })
 
     except ConnectionError:
-       return render(request, 'index.html', {'city':'Connection might be down sorry',})
+       return render(request, 'index.html', {'ConError':'**Connection might be down sorry**',})
     except ValueError:
-         return render(request, 'index.html', {'city':city,})
+         return render(request, 'index.html', {'valError':'',})
     except KeyError:
-        return render(request, 'index.html', {'city':'Please enter a valid city ',})
+        return render(request, 'index.html', {'KeyError':'Please enter a valid city ',})
     finally:
         pass
 
