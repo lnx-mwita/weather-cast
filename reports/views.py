@@ -49,7 +49,7 @@ def weather(request):
     except ValueError:
          return render(request, 'index.html', {'valError':'',})
     except KeyError:
-        return render(request, 'index.html', {'Error':'Please enter a valid city ',})
+        return render(request, 'index.html', {'Error':'  ***Please enter a valid city ',})
     finally:
         pass
 
