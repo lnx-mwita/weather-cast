@@ -9,7 +9,7 @@ time = datetime.now().strftime("%H:%M")
 # Create your views here.
 def home(request):
     return render(request,'index.html')
-    
+
 def weather(request):
     try:
         city = request.GET['search']
@@ -45,11 +45,11 @@ def weather(request):
             })
 
     except ConnectionError:
-       return render(request, 'index.html', {'ConError':'**Connection might be down sorry**',})
+       return render(request, 'index.html', {'Error':'**Connection might be down sorry**',})
     except ValueError:
          return render(request, 'index.html', {'valError':'',})
     except KeyError:
-        return render(request, 'index.html', {'KeyError':'Please enter a valid city ',})
+        return render(request, 'index.html', {'Error':'Please enter a valid city ',})
     finally:
         pass
 
