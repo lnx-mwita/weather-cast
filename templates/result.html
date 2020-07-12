@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="{% static 'css/reslt.css' %}">
+    <link rel="stylesheet" href="{% static 'css/result.css' %}">
 
         <!-- END .ftco-cover-1 -->
        <!-- Card -->
@@ -25,37 +25,37 @@
                         <div class="d-flex flex-column mr-3">
                             <h2 class="mt-3 mb-0">{{city}}</h2> <p>{{time}} - {{date}}</p>
                         </div>
+                        <img src={{icon}} alt="">
                         <div class="d-flex flex-column text-center">
-                            <h3 class="fa fa-sun-o mt-4"></h3> <small>Sunny</small>
+                            <h3 class="fa fa-sun-o mt-4"></h3> <p>{{description}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="card2 col-lg-4 col-md-5">
-                    <div class="row px-3"> <input type="button" name="location" value="Go back" class="mb-5">
-                        <div class="fa fa-search mb-5 mr-0 text-center"></div>
-                    </div>
+                    <form action="" method="GET">
+                        <div class="row px-3"> <input type="submit" name="location" value="Go back" class="mb-5">
+                            <div class="fa fa-search mb-5 mr-0 text-center"></div>
+                        </div></form>
                     <div class="mr-5">
                         <p class="light-text suggestion">{{position}}</p>
-                        <p class="light-text suggestion">Manchester</p>
-                        <p class="light-text suggestion">New York</p>
-                        <p class="light-text suggestion">California</p>
+                        <p class="light-text suggestion">Country :{{country}}</p>
                         <div class="line my-5"></div>
                         <p>Weather Details</p>
                         <div class="row px-3">
                             <p class="light-text">Cloudy</p>
-                            <p class="ml-auto">12%</p>
+                            <p class="ml-auto">{{clouds}}%</p>
                         </div>
                         <div class="row px-3">
                             <p class="light-text">Humidity</p>
-                            <p class="ml-auto">78%</p>
+                            <p class="ml-auto">{{humidity}}%</p>
                         </div>
                         <div class="row px-3">
                             <p class="light-text">Wind</p>
-                            <p class="ml-auto">1km/h</p>
+                            <p class="ml-auto">{{windspeed}}km/h</p>
                         </div>
                         <div class="row px-3">
-                            <p class="light-text">Rain</p>
-                            <p class="ml-auto">0mm</p>
+                            <p class="light-text">Wind Direction</p>
+                            <p class="ml-auto">{{direction}}&#176;</p>
                         </div>
                         <div class="line mt-3"></div>
                     </div>
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-        
+    <footer>&copy; Copyright WeatherCast <a href="#">.Mwita</a> All rights Resevered. Created by Mwita..</footer>   
     
     <script src="{% static 'js/main.js' %}"></script>
 

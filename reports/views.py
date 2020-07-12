@@ -9,7 +9,7 @@ time = datetime.now().strftime("%H:%M")
 # Create your views here.
 def home(request):
     return render(request,'index.html')
-
+    
 def weather(request):
     try:
         city = request.GET['search']
@@ -21,12 +21,27 @@ def weather(request):
         date = today.strftime("%B %d, %Y")
         lat  = data['coord']['lat']
         long = data['coord']['lon']
+        windspeed = int(data['wind']['speed'])*3.6
+        direction = data['wind']['deg']
+        humidity = data['main']['humidity']
+        clouds = data['clouds']['all']
+        country = data['sys']['country']
+        description = data['weather'][0]['description']
+        icon = data['weather'][0]['icon']
+        iconurl = "http://openweathermap.org/img/wn/"+icon+"@2x.png"
         return render(request, 'result.html', {
             'city':city,
             'position':['Position : ',lat,long],
             'temps':degrees,
             'date':date,
             'time':time,
+            'windspeed':windspeed,
+            'direction':direction,
+            'humidity':humidity,
+            'clouds':clouds,
+            'country':country,
+            'description':description,
+            'icon':iconurl,
             })
 
     except ConnectionError:
